@@ -1,0 +1,15 @@
+com/ata/lambdaexpressions/classroom/Phase3Test.java
+ com.ata.lambdaexpressions.classroom.Phase3Test
+com/ata/lambdaexpressions/classroom/Phase4Test.java
+ com.ata.lambdaexpressions.classroom.Phase4Test
+ com.ata.lambdaexpressions.classroom.Phase4Test$SupplierSpy
+com/ata/lambdaexpressions/classroom/extension/LambdaListsTest.java
+ com.ata.lambdaexpressions.classroom.extension.LambdaListsTest
+com/ata/lambdaexpressions/classroom/extension/ParlorExtensionTest.java
+ com.ata.lambdaexpressions.classroom.extension.ParlorExtensionTest
+com/ata/lambdaexpressions/classroom/Phase0Test.java
+ com.ata.lambdaexpressions.classroom.Phase0Test
+com/ata/lambdaexpressions/classroom/Phase2Test.java
+ com.ata.lambdaexpressions.classroom.Phase2Test
+com/ata/lambdaexpressions/classroom/Phase1Test.java
+ com.ata.lambdaexpressions.classroom.Phase1Test

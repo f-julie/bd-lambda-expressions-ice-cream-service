@@ -1,5 +1,6 @@
 package com.ata.lambdaexpressions.classroom;
 
+import com.ata.lambdaexpressions.classroom.converter.RecipeConverter;
 import com.ata.lambdaexpressions.classroom.dao.CartonDao;
 import com.ata.lambdaexpressions.classroom.dao.RecipeDao;
 import com.ata.lambdaexpressions.classroom.exception.CartonCreationFailedException;
@@ -52,6 +53,12 @@ public class IceCreamParlorService {
         List<Carton> cartons = cartonDao.getCartonsByFlavorNames(flavorNames);
 
         // PHASE 1: Use removeIf() to remove any empty cartons from cartons
+        // Pass each carton to a Lambda expression to see if it's empty
+
+        cartons.removeIf((carton) -> carton.isEmpty());
+
+        // Alternative using method reference instead of Lambda expression
+        //cartons.removeIf(Carton::isEmpty);
 
         return buildSundae(cartons);
     }
@@ -62,6 +69,11 @@ public class IceCreamParlorService {
 
         // PHASE 2: Use forEach() to add one scoop of each flavor
         // remaining in cartons
+
+        // Go through the list of Cartons we are given and get one scoop for the sundae
+        // Since cartons is a List we can use the List forEach instead of Stream forEach
+
+        cartons.forEach((aCarton) -> {sundae.addScoop(aCarton.getFlavor());});
 
         return sundae;
     }
@@ -78,9 +90,9 @@ public class IceCreamParlorService {
      * @return the number of cartons produced by the ice cream maker
      */
     public int prepareFlavors(List<String> flavorNames) {
-        List<Recipe> recipes = map(
-            flavorNames,
-            (flavorName) -> {
+        List<Recipe> recipes = map( // This is a helper method called map provided in the App - NOT the Stream map()
+            flavorNames, // will be called 'input' in the helper method
+            (flavorName) -> { // will be called 'converter' in the helper method
                 // trap the checked exception, RecipeNotFoundException, and
                 // wrap in a runtime exception because our lambda can't throw
                 // checked exceptions
@@ -93,7 +105,21 @@ public class IceCreamParlorService {
         );
 
         // PHASE 3: Replace right hand side: use map() to convert List<Recipe> to List<Queue<Ingredient>>
-        List<Queue<Ingredient>> ingredientQueues = new ArrayList<>();
+
+        // Replaced by using a Stream map() method
+        //List<Queue<Ingredient>> ingredientQueues = new ArrayList<>();
+        //
+        // Since all we are doing in the Lambda expression is calling a static method in a class
+        // we can use a method reference for our Lambda expression
+
+        // Using a method reference
+        //List<Queue<Ingredient>> ingredientQueues = recipes.stream().map(RecipeConverter::fromRecipeToIngredientQueue)
+        //    .collect(Collectors.toList());
+
+        // Alternative using a Lambda expression
+        List<Queue<Ingredient>> ingredientQueues = recipes.stream().map((aRecipe) ->
+                        RecipeConverter.fromRecipeToIngredientQueue(aRecipe))
+                .collect(Collectors.toList());
 
         return makeIceCreamCartons(ingredientQueues);
     }
@@ -105,7 +131,8 @@ public class IceCreamParlorService {
         for (Queue<Ingredient> ingredients : ingredientQueues) {
 
             // PHASE 4: provide Supplier to prepareIceCream()
-            if (iceCreamMaker.prepareIceCreamCarton(null)) {
+            // Use a no-arg Lambda expression to get elements out of the Queue
+            if (iceCreamMaker.prepareIceCreamCarton(() -> ingredients.poll())) {
                 cartonsCreated++;
             }
         }
@@ -119,10 +146,29 @@ public class IceCreamParlorService {
      *
      * (We will get to Java streams in a later lesson, at which point we won't need a helper method
      * like this.)
+     *
+     * @param List
+     * @param Functional Reference - named method or Lambda expression
+     *
+     * Generic data types are used when methods are needed to do the same processing on different data types
+     *
+     * <T, R> - indicates that two generic data types will be referenced
+     *                   the 1st we'll call 'T'
+     *                   the 2nd we'll call 'R'
+     *
+     * List<T> - indicates a List of the 1st generic data type
+     * List<R> - indicates a List of the 2nd generic data type
+     *
+     * Function<T, R> - indicates a method that has two parameters, 1st is type 'T',
+     *                   2nd is type 'R'
      */
+    // This method will return a List of 2nd generic data type
+    // and receive a List of the 1st generic data type
+    // and a method that receives two parameters one of the 1st generic type and one of the 2nd generic type
     private <T, R> List<R> map(List<T> input, Function<T, R> converter) {
+        // Use the Stream interface map() method to run the converter method (2nd parameter) passed to it
         return input.stream()
-            .map(converter)
+            .map(converter) // pass the function we received to the Stream map() method
             .collect(Collectors.toList());
     }
 }

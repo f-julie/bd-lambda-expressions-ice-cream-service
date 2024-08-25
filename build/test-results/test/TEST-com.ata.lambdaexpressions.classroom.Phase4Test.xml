@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ata.lambdaexpressions.classroom.Phase4Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-08-25T18:56:41" hostname="DESKTOP-URGQT26" time="1.698">
+  <properties/>
+  <testcase name="prepareFlavors_oneFlavor_prepareIceCreamCartonReceivesCorrectIngredients()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="1.491"/>
+  <testcase name="prepareFlavors_multipleFlavors_returnsCorrectNumberOfCartons()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="0.041"/>
+  <testcase name="iceCreamMaker_prepareIceCreamCarton_callsFunctionalInterface()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="0.149"/>
+  <system-out><![CDATA[Mixing ingredients: [CREAM, SUGAR, EGGS, CHOCOLATE]
+Freezing!
+Mixing ingredients: [CREAM, SUGAR, EGGS, VANILLA]
+Freezing!
+Mixing ingredients: [CREAM, SUGAR, EGGS, STRAWBERRIES]
+Freezing!
+Mixing ingredients: [CHOCOLATE, EGGS]
+Freezing!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
