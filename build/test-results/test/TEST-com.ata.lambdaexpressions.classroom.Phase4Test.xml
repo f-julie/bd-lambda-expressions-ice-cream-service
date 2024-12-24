@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.ata.lambdaexpressions.classroom.Phase4Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-08-25T18:56:41" hostname="DESKTOP-URGQT26" time="1.698">
+<testsuite name="com.ata.lambdaexpressions.classroom.Phase4Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-12-24T23:48:59" hostname="DESKTOP-URGQT26" time="2.268">
   <properties/>
-  <testcase name="prepareFlavors_oneFlavor_prepareIceCreamCartonReceivesCorrectIngredients()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="1.491"/>
-  <testcase name="prepareFlavors_multipleFlavors_returnsCorrectNumberOfCartons()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="0.041"/>
-  <testcase name="iceCreamMaker_prepareIceCreamCarton_callsFunctionalInterface()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="0.149"/>
+  <testcase name="prepareFlavors_oneFlavor_prepareIceCreamCartonReceivesCorrectIngredients()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="1.718"/>
+  <testcase name="prepareFlavors_multipleFlavors_returnsCorrectNumberOfCartons()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="0.267"/>
+  <testcase name="iceCreamMaker_prepareIceCreamCarton_callsFunctionalInterface()" classname="com.ata.lambdaexpressions.classroom.Phase4Test" time="0.28"/>
   <system-out><![CDATA[Mixing ingredients: [CREAM, SUGAR, EGGS, CHOCOLATE]
 Freezing!
 Mixing ingredients: [CREAM, SUGAR, EGGS, VANILLA]
